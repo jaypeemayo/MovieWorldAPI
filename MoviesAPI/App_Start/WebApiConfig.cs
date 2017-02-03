@@ -1,4 +1,6 @@
-﻿using MoviesAPI.Controllers;
+﻿using Microsoft.Practices.Unity;
+using MoviesAPI.Controllers;
+using MoviesAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,15 @@ namespace MoviesAPI
         public static void Register(HttpConfiguration config)
         {
 
+            var container = new UnityContainer();
+            container.RegisterType<IWebJetWrapperService, WebJetWrapperService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IConfigurationService, ConfigurationService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IMovieServicesFactory, MovieServicesFactory>(new HierarchicalLifetimeManager());
+
+            config.DependencyResolver = new UnityResolver(container);
+
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
-
-    //        config.Formatters.JsonFormatter.SupportedMediaTypes
-    //.Add(new MediaTypeHeaderValue("text/html"));
-            // Web API configuration and services
 
             // Web API routes
             config.MapHttpAttributeRoutes();
