@@ -14,15 +14,15 @@ namespace MoviesAPI
     {
         public static void Register(HttpConfiguration config)
         {
-
+            //Setup container
             var container = new UnityContainer();
             container.RegisterType<IWebJetWrapperService, WebJetWrapperService>(new HierarchicalLifetimeManager());
             container.RegisterType<IConfigurationService, ConfigurationService>(new HierarchicalLifetimeManager());
             container.RegisterType<IMovieServicesFactory, MovieServicesFactory>(new HierarchicalLifetimeManager());
-
             config.DependencyResolver = new UnityResolver(container);
 
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            //setup CORS
+            var cors = new EnableCorsAttribute("*", "*", "*"); // put * for development purpose only. In actual deployment, should set the address of client if it has different address. If the same we can remove this.
             config.EnableCors(cors);
 
             // Web API routes

@@ -240,3 +240,12 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/MoviesAPI/Properties/PublishProfiles
+/MoviesAPI/systemInfo.xml
+/MoviesAPI/parameters.xml
+/MoviesAPI/archive.xml
+/MoviesAPI.SourceManifest.xml
+/MoviesAPI.SetParameters.xml
+/MoviesAPI.deploy.cmd
+/MoviesAPI.deploy-readme.txt
+/MovieAPI.zip
