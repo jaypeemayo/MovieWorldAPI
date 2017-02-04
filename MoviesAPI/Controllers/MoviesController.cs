@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using MoviesAPI.Models;
 using MoviesAPI.Services;
+using System.IO;
+using System.Drawing;
 
 namespace MoviesAPI.Controllers
 {
@@ -106,5 +108,6 @@ namespace MoviesAPI.Controllers
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }
+
     }
 }
