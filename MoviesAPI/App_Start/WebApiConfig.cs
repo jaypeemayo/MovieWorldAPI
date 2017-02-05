@@ -16,7 +16,7 @@ namespace MoviesAPI
         {
             //Setup container
             var container = new UnityContainer();
-            container.RegisterType<IWebJetWrapperService, WebJetWrapperService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IHttpService, HttpService>(new HierarchicalLifetimeManager());
             container.RegisterType<IConfigurationService, ConfigurationService>(new HierarchicalLifetimeManager());
             container.RegisterType<IMovieServicesFactory, MovieServicesFactory>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);

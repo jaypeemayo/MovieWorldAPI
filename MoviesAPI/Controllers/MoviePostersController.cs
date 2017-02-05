@@ -26,10 +26,9 @@ namespace MoviesAPI.Controllers
 
                 imageCache[id] = bytes;
                 MemoryStream ms = new MemoryStream(bytes);
-                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
                 HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
                 result.Content = new ByteArrayContent(ms.ToArray());
-                result.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
              
                 return result;
 

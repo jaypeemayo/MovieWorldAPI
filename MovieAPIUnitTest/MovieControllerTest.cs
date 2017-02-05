@@ -32,12 +32,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.ServiceUnavailable;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI", out httpStatusCode)).Returns(movieListString);
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI2", out httpStatusCode)).Returns(movieListString2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI", out httpStatusCode)).Returns(movieListString);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI2", out httpStatusCode)).Returns(movieListString2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
@@ -65,12 +65,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.ServiceUnavailable;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI", out httpStatusCode)).Throws(new InvalidOperationException());
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI2", out httpStatusCode)).Returns(movieListString2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI2", out httpStatusCode)).Returns(movieListString2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
@@ -97,12 +97,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI", out httpStatusCode)).Returns(movieListString);
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetAPI2", out httpStatusCode)).Returns(movieListString2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI", out httpStatusCode)).Returns(movieListString);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetAPI2", out httpStatusCode)).Returns(movieListString2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
   
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
@@ -139,12 +139,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie);
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 
@@ -175,12 +175,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie);
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 
@@ -205,12 +205,12 @@ namespace MovieAPIUnitTest
             IDictionary<string, IProvider> providersDictionary = new Dictionary<string, IProvider>();         
             configurationServiceMock.Setup(o => o.ProvidersDictionary).Returns(providersDictionary);
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie);
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie);
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Returns(movie2);
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 
@@ -237,12 +237,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("cinemaworld", new Provider() { Name = "cinemaworld", GetAPI = "GetAPI", GetPerItemAPI = "GetPerItemAPI" });
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 
@@ -270,12 +270,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("cinemaworld", new Provider() { Name = "cinemaworld", GetAPI = "GetAPI", GetPerItemAPI = "GetPerItemAPI" });
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 
@@ -303,12 +303,12 @@ namespace MovieAPIUnitTest
             providersDictionary.Add("cinemaworld", new Provider() { Name = "cinemaworld", GetAPI = "GetAPI", GetPerItemAPI = "GetPerItemAPI" });
             providersDictionary.Add("filmworld", new Provider() { Name = "filmworld", GetAPI = "GetAPI2", GetPerItemAPI = "GetPerItemAPI2" });
 
-            Mock<IWebJetWrapperService> webJetWrapperServiceMock = new Mock<IWebJetWrapperService>();
+            Mock<IHttpService> webJetWrapperServiceMock = new Mock<IHttpService>();
             HttpStatusCode httpStatusCode = HttpStatusCode.OK;
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
-            webJetWrapperServiceMock.Setup(o => o.GetMovies("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
+            webJetWrapperServiceMock.Setup(o => o.Get("GetPerItemAPI", out httpStatusCode)).Throws(new InvalidOperationException());
             movieServicesFactoryMock.Setup(o => o.GetConfigurationService()).Returns(configurationServiceMock.Object);
-            movieServicesFactoryMock.Setup(o => o.GetWebJetWrapperService()).Returns(webJetWrapperServiceMock.Object);
+            movieServicesFactoryMock.Setup(o => o.GetHttpService()).Returns(webJetWrapperServiceMock.Object);
 
             MoviesController movieController = new MoviesController(movieServicesFactoryMock.Object);
 

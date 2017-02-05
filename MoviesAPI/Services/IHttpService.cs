@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace MoviesAPI.Services
 {
-    public interface IWebJetWrapperService
+    public interface IHttpService
     {
-        string GetMovies(string url, out HttpStatusCode statusCode);
+        string Get(string url, out HttpStatusCode statusCode);
     }
 }

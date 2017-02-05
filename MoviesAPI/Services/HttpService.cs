@@ -9,15 +9,15 @@ using System.Web;
 
 namespace MoviesAPI.Services
 {
-    public class WebJetWrapperService : IWebJetWrapperService
+    public class HttpService : IHttpService
     {
         IConfigurationService iConfigurationService;
-        public WebJetWrapperService(IConfigurationService iConfigurationService)
+        public HttpService(IConfigurationService iConfigurationService)
         {
             this.iConfigurationService = iConfigurationService;
         }
 
-        public string GetMovies(string url, out HttpStatusCode statusCode)
+        public string Get(string url, out HttpStatusCode statusCode)
         {
             statusCode = HttpStatusCode.OK;
             if (string.IsNullOrEmpty(url))

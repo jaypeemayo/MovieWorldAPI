@@ -19,9 +19,9 @@ namespace MoviesAPI.Services
             return this.container.Resolve(typeof(IConfigurationService)) as IConfigurationService;
         }
 
-        public IWebJetWrapperService GetWebJetWrapperService()
+        public IHttpService GetHttpService()
         {
-            return this.container.Resolve(typeof(WebJetWrapperService)) as IWebJetWrapperService;
+            return this.container.Resolve(typeof(HttpService)) as IHttpService;
         }
     }
 }

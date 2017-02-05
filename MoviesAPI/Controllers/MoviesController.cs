@@ -18,13 +18,13 @@ namespace MoviesAPI.Controllers
 {
     public class MoviesController : ApiController
     {
-        IWebJetWrapperService webjetWrapperService;
+        IHttpService httpService;
         IConfigurationService configurationService;
         private IDictionary<string, IProvider> providersDictionary;
 
         public MoviesController(IMovieServicesFactory movieServicesFactory)
         {
-            this.webjetWrapperService = movieServicesFactory.GetWebJetWrapperService();
+            this.httpService = movieServicesFactory.GetHttpService();
             this.configurationService = movieServicesFactory.GetConfigurationService();
             this.providersDictionary = configurationService.ProvidersDictionary;
         }
@@ -40,7 +40,7 @@ namespace MoviesAPI.Controllers
                 foreach (IProvider provider in this.providersDictionary.Values)
                 {
                     HttpStatusCode statusCode;
-                    string movies = webjetWrapperService.GetMovies(provider.GetAPI, out statusCode);
+                    string movies = httpService.Get(provider.GetAPI, out statusCode);
                     if (statusCode != HttpStatusCode.OK)
                     {
                         return new HttpResponseMessage(statusCode);
@@ -86,7 +86,7 @@ namespace MoviesAPI.Controllers
                 if (this.providersDictionary.TryGetValue(provider, out providerObj))
                 {
                     HttpStatusCode statusCode;
-                    string movies = webjetWrapperService.GetMovies(string.Format(providerObj.GetPerItemAPI, id), out statusCode);
+                    string movies = httpService.Get(string.Format(providerObj.GetPerItemAPI, id), out statusCode);
                     if (statusCode != HttpStatusCode.OK)
                     {
                         return new HttpResponseMessage(statusCode);

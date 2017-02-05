@@ -126,10 +126,10 @@
     <Compile Include="Services\ConfigurationService.cs" />
     <Compile Include="Services\IConfigurationService.cs" />
     <Compile Include="Services\IMovieServicesFactory.cs" />
-    <Compile Include="Services\IWebJetWrapperService.cs" />
+    <Compile Include="Services\IHttpService.cs" />
     <Compile Include="App_Start\UnityResolver.cs" />
     <Compile Include="Services\MovieServicesFactory.cs" />
-    <Compile Include="Services\WebJetWrapperService.cs" />
+    <Compile Include="Services\HttpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

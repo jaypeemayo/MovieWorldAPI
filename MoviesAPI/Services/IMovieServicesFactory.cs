@@ -8,7 +8,7 @@ namespace MoviesAPI.Services
 {
     public interface IMovieServicesFactory
     {
-        IWebJetWrapperService GetWebJetWrapperService();
+        IHttpService GetHttpService();
         IConfigurationService GetConfigurationService();
     }
 }
